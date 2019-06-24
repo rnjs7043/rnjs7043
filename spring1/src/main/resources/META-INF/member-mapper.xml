@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="MemberMapper">
+
+	<select id="idCheck"
+			parameterType="kr.co.koitt.login1.MemberVO"
+			resultType="int">
+		select count(no) cnt
+		from member
+		where id = #{id}
+	</select>
+
+	<select id="login"
+			parameterType="kr.co.koitt.login1.MemberVO"
+			resultType="int">
+		select count(no) cnt
+		from member
+		where id = #{id}
+		and pass = #{pass}
+	</select>
+
+	<select id="login2"
+			parameterType="kr.co.koitt.login1.MemberVO"
+			resultType="kr.co.koitt.login1.MemberVO">
+		select no, id, pass, name, tel, email
+			, to_char(join_date,'YYYY-MM-dd') join_date
+		from member
+		where id = #{id}
+		and pass = #{pass}
+	</select>
+
+</mapper>
